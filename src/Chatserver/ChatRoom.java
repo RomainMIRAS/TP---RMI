@@ -2,42 +2,49 @@ package Chatserver;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 public class ChatRoom extends UnicastRemoteObject implements IChatRoom{
 
-	protected ChatRoom() throws RemoteException {
+	String chatRoomName;
+	ArrayList<IParticipant> users;
+	
+	protected ChatRoom(String chatRoomName) throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
+		this.chatRoomName = chatRoomName;
 	}
 
 	@Override
 	public String name() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return chatRoomName;
 	}
 
 	@Override
 	public void connect(IParticipant p) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+		users.add(p);
 	}
 
 	@Override
 	public void leave(IParticipant p) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+		users.remove(p);
 	}
 
 	@Override
 	public String[] who() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		String[] usersName = new String[users.size()];
+		for (int i = 0; i < usersName.length; i++) {
+			usersName[i] = users.get(i).name();
+		}
+		return usersName;
 	}
 
 	@Override
 	public void send(IParticipant p, String msg) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+		for (IParticipant user : users) {
+			if (p != users) {
+				user.receive(p.name(), msg);
+			}
+		}
 	}
 
 }
