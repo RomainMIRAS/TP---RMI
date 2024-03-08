@@ -2,11 +2,11 @@ package Chatserver;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.List;
 
 public interface IChatRoom extends Remote{
-	void connect()  throws RemoteException;
-	void leave()  throws RemoteException;
-	void say(String msgToSay)  throws RemoteException;
-	List<String> who()  throws RemoteException;
+	String name() throws RemoteException;
+	void connect(IParticipant p) throws RemoteException;
+	void leave(IParticipant p) throws RemoteException;
+	String[] who() throws RemoteException;
+	void send(IParticipant p, String msg) throws RemoteException;
 }

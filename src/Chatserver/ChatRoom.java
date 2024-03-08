@@ -2,7 +2,6 @@ package Chatserver;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.List;
 
 public class ChatRoom extends UnicastRemoteObject implements IChatRoom{
 
@@ -12,27 +11,33 @@ public class ChatRoom extends UnicastRemoteObject implements IChatRoom{
 	}
 
 	@Override
-	public void connect() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void leave() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void say(String msgToSay) throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<String> who() throws RemoteException {
+	public String name() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void connect(IParticipant p) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void leave(IParticipant p) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String[] who() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void send(IParticipant p, String msg) throws RemoteException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
