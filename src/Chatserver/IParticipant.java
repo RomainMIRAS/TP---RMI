@@ -1,7 +1,10 @@
 package Chatserver;
 
-public interface IParticipant {
-	String name();
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
-	void receive(String name, String msg);
+public interface IParticipant extends Remote{
+	String name() throws RemoteException;
+
+	void receive(String name, String msg) throws RemoteException;
 }
