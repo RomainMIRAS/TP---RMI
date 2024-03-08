@@ -16,14 +16,16 @@ public class Client {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		Scanner in = new Scanner(System.in);
+		System.out.println("Votre nom de chatroom :");
+		String s = in.nextLine();
 		
-		IParticipant moi = new Participant("moi");
+		IParticipant moi = new Participant(s);
 		chatroom.connect(moi);
 		
 		System.out.println("Bienvenue sur la chatroom : " + chatroom.name());
-        Scanner in = new Scanner(System.in);
 		while(true) {
-			String s = in.nextLine();
+			s = in.nextLine();
 			switch (s) {
 			case "/who":
 				String[] who = chatroom.who();
@@ -39,6 +41,7 @@ public class Client {
 				break;
 			case "/quit":
 				chatroom.leave(moi);
+				System.out.println("Merci d'avoir participé !");
 				System.exit(0);
 				break;
 			default:

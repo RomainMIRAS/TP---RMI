@@ -11,6 +11,7 @@ public class ChatRoom extends UnicastRemoteObject implements IChatRoom{
 	
 	protected ChatRoom(String chatRoomName) throws RemoteException {
 		super();
+		users = new ArrayList<>();
 		this.chatRoomName = chatRoomName;
 	}
 
@@ -41,7 +42,7 @@ public class ChatRoom extends UnicastRemoteObject implements IChatRoom{
 	@Override
 	public void send(IParticipant p, String msg) throws RemoteException {
 		for (IParticipant user : users) {
-			if (p != users) {
+			if (!p.equals(user)) {
 				user.receive(p.name(), msg);
 			}
 		}
