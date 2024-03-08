@@ -1,15 +1,20 @@
 package babystep;
 
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class Client {
-	public static void main(String[] args) {
-		Registry registry = LocateRegistry.getRegistry("myweekendhost.xxx.yy", 9999);
-		IWeatherStation ws = (IWeatherStation) registry.lookup("WS");
-		int temp=ws.getTemperature(..);
-		String dir=ws.getWindDirection();
-		int speed=ws.getWindSpeed();
-		System.out.println("Temp="+temp+" Wind speed="+speed+" Direction="+dir);
+	public static void main(String[] args) throws RemoteException  {
+		Registry registry = LocateRegistry.getRegistry("127.0.0.1", 9999);
+		IPrinter print = null;
+		try {
+			print = (IPrinter) registry.lookup("print");
+		} catch ( NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		print.print("hello");
 	}
 }
