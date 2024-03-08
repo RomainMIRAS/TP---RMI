@@ -41,6 +41,9 @@ public class ChatRoom extends UnicastRemoteObject implements IChatRoom{
 
 	@Override
 	public void send(IParticipant p, String msg) throws RemoteException {
+		//Affichage cote serveur de la conversation de la chatroom
+		System.out.println("Participant "+p.name()+": "+msg);
+
 		for (IParticipant user : users) {
 			if (!p.equals(user)) {
 				user.receive(p.name(), msg);
