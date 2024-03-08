@@ -1,5 +1,5 @@
 package Chatserver;
 
-public class Participant {
+public class Participant implements IParticipant{
 
 }
