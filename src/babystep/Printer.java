@@ -5,13 +5,13 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class Printer extends UnicastRemoteObject implements IPrinter {
 	
+
 	protected Printer() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void print(String s) {
+	public void print(String s) throws RemoteException{
 		System.out.println(s);
 	}
 

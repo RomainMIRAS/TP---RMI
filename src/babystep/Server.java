@@ -8,7 +8,7 @@ import java.rmi.registry.Registry;
 public class Server {
 	public static void main(String[] args) throws RemoteException, AlreadyBoundException {
 		Registry registry = LocateRegistry.createRegistry(9999);
-		Printer print = new Printer();
-		registry.bind("print", print);	
+		Printer printer = new Printer();
+		registry.rebind("LinePrinter", printer);	
 	}
 }

@@ -10,7 +10,7 @@ public class Client {
 		Registry registry = LocateRegistry.getRegistry("127.0.0.1", 9999);
 		IPrinter print = null;
 		try {
-			print = (IPrinter) registry.lookup("print");
+			print = (IPrinter) registry.lookup("LinePrinter");
 		} catch ( NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
