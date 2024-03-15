@@ -7,8 +7,8 @@ import Chatserver.clientSide.IParticipant;
 
 public interface IChatRoomGenerator extends Remote {
 	
-	IChatRoom connect(IParticipant p, int idChatRoom) throws RemoteException;
-
 	void delete(IChatRoom chatRoomToDelete) throws RemoteException;
+
+	IChatRoom connect(IParticipant p, String ChatRoomName) throws RemoteException;
 	
 }

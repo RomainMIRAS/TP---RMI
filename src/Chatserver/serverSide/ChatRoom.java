@@ -22,8 +22,7 @@ public class ChatRoom extends UnicastRemoteObject implements IChatRoom{
 		return chatRoomName;
 	}
 
-	@Override
-	public void connect(IParticipant p) throws RemoteException {
+	public void connectToChatRoom(IParticipant p) throws RemoteException {
 		users.add(p);
 		System.out.println("Participant "+p.name()+" has joined the chatroom "+chatRoomName);
 		//Affichage cote serveur de la conversation de la chatroom
