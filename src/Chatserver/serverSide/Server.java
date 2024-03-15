@@ -1,4 +1,4 @@
-package Chatserver;
+package Chatserver.serverSide;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;

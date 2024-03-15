@@ -1,10 +1,12 @@
-package Chatserver;
+package Chatserver.clientSide;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Scanner;
+
+import Chatserver.serverSide.IChatRoom;
 
 public class Client {
 	public static void main(String[] args) throws RemoteException  {

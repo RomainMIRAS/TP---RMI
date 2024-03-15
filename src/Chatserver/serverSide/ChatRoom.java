@@ -1,8 +1,10 @@
-package Chatserver;
+package Chatserver.serverSide;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+
+import Chatserver.clientSide.IParticipant;
 
 public class ChatRoom extends UnicastRemoteObject implements IChatRoom{
 

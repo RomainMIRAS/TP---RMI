@@ -1,4 +1,4 @@
-package Chatserver;
+package Chatserver.clientSide;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
