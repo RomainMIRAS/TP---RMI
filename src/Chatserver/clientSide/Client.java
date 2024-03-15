@@ -7,25 +7,31 @@ import java.rmi.registry.Registry;
 import java.util.Scanner;
 
 import Chatserver.serverSide.IChatRoom;
+import Chatserver.serverSide.IChatRoomGenerator;
 
 public class Client {
 	public static void main(String[] args) throws RemoteException  {
 		Registry registry = LocateRegistry.getRegistry("127.0.0.1", 9999);
-		IChatRoom chatroom = null;
+		IChatRoomGenerator chatroomGenerator = null;
 		try {
-			chatroom = (IChatRoom) registry.lookup("ChatRoom");
+			chatroomGenerator = (IChatRoomGenerator) registry.lookup("ChatRoomGenerator");
 		} catch ( NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Scanner in = new Scanner(System.in);
-		System.out.println("Votre nom de chatroom :");
-		String s = in.nextLine();
 		
-		IParticipant moi = new Participant(s);
-		chatroom.connect(moi);
+		System.out.println("Le nom de la chatroom :");
+		String sChatroom = in.nextLine();
+		
+		System.out.println("Votre nom dans la chatroom :");
+		String sUser = in.nextLine();
+		
+		IParticipant moi = new Participant(sUser);
+		IChatRoom chatroom = chatroomGenerator.connect(moi, sChatroom);
 		
 		System.out.println("Bienvenue sur la chatroom : " + chatroom.name());
+		String s = null;
 		while(true) {
 			s = in.nextLine();
 			switch (s) {
