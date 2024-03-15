@@ -26,7 +26,7 @@ public class ChatRoomGenerator  extends UnicastRemoteObject implements IChatRoom
 				return chatroom;
 			}
 		}
-		ChatRoom newChatRoom = new ChatRoom(chatRoomName);
+		ChatRoom newChatRoom = new ChatRoom(chatRoomName,this);
 		chatrooms.add(newChatRoom);
 		newChatRoom.connectToChatRoom(p);
 		return newChatRoom;
